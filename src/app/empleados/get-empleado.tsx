@@ -1,12 +1,14 @@
-import type { Templeado } from "@/app/main";
+import type { Templeado, ThorasTrabajo } from "@/app/main";
 import { useState, ChangeEvent } from "react";
 
 export default function GetEmpleado ({
     setEmpleado,
     setComponente,
+    setHorasTrabajo,
     setResponseStatusCode }: {
         setEmpleado?: (x: Templeado) => void,
         setComponente: (x: string) => void,
+        setHorasTrabajo: (x: ThorasTrabajo[]) => void,
         setResponseStatusCode? :(x: number) => void,
     }) {
 
@@ -17,6 +19,13 @@ export default function GetEmpleado ({
         const empleado = await dataEmpleado.json();
         if (setEmpleado) setEmpleado(empleado);
         setComponente('EMPLEADO');
+    }
+
+    async function getHorasTrabajo ()  {
+        const data = await fetch(`/horas-trabajo/empleado/${id}`);
+        const horasTrabajo = await data.json();
+        if (setHorasTrabajo) setHorasTrabajo(horasTrabajo);
+        setComponente('HORAS_TRABAJO');
     }
 
     async function eliminarEmpleado () {
@@ -36,13 +45,19 @@ export default function GetEmpleado ({
                 placeholder="Empleado ID"
                 onChange={handleInputChange}/>
             <button type="button"
-                onClick={() => getEmpleado()}
+                onClick={getEmpleado}
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 
                 Empleado
             </button>
             <button type="button"
-                onClick={() => eliminarEmpleado()}
+                onClick={getHorasTrabajo}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                
+                Horas Trabajo
+            </button>
+            <button type="button"
+                onClick={eliminarEmpleado}
                 className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                 
                 ELIMINAR EMPLEADO
