@@ -9,6 +9,8 @@ import Empleado from "./empleados/respuestas/res-empleado";
 import EmpleadoEliminado from "@/app/empleados/respuestas/res-empleado-delete";
 import HorasTrabajoEmpleado from "@/app/horas-trabajo/respuestas/res-horas-trabajo";
 import GetHorasTrabajo from "@/app/horas-trabajo/get-horas-trabajo";
+import GetPayroll from "./horas-trabajo/get-payroll";
+import Payroll from "./horas-trabajo/respuestas/res-payroll";
 
 export type Templeado = {
     id: number;
@@ -34,6 +36,14 @@ export type Tpayroll = {
 
 const empleadoNull = {id:-1, nombre:'Sin Nombre'}
 const horasTrabajoNull: ThorasTrabajo = {id:-1, fecha:'', horaEntrada:'', horaSalida:'', empleadoId:-1}
+const payRollNull: Tpayroll = {
+    diasTrabajados:-1,
+    horasTrabajadas:-1,
+    horasNormales:-1,
+    horasExtra:-1,
+    tarifaHoraria:-1,
+    payroll:-1,
+}
 
 export default function Main () {
 
@@ -41,6 +51,7 @@ export default function Main () {
     const [empleado, setEmpleado] = useState<Templeado>(empleadoNull);
     const [horasTrabajo, setHorasTrabajo] = useState<ThorasTrabajo[]>([]);
     const [horasTrabajoId, setHorasTrabajoId] = useState<ThorasTrabajo>(horasTrabajoNull);
+    const [payroll, setPayroll] = useState<Tpayroll>(payRollNull);
     const [componente, setComponente] = useState<string>('EMPLEADO');
     const [responseStatusCode, setResponseStatusCode] = useState<number>(-1);
 
@@ -54,6 +65,7 @@ export default function Main () {
             case 'HORAS_TRABAJO_LISTA': 
             case 'HORAS_TRABAJO': return <HorasTrabajoEmpleado horasTrabajo={horasTrabajo}></HorasTrabajoEmpleado>
             case 'HORAS_TRABAJO_ID': return <HorasTrabajoEmpleado horasTrabajoId={horasTrabajoId}></HorasTrabajoEmpleado>
+            case 'PAYROLL': return <Payroll payroll={payroll}></Payroll>
         }
     }
 
@@ -73,6 +85,7 @@ export default function Main () {
             </div>
             <div className="flex flex-col">
                 <GetHorasTrabajo setHorasTrabajo={setHorasTrabajo} setComponente={setComponente}></GetHorasTrabajo>
+                <GetPayroll setPayroll={setPayroll} setComponente={setComponente}></GetPayroll>
             </div>
             <div>
                 <ResultComponent></ResultComponent>   
