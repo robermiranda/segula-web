@@ -23,12 +23,14 @@ export type ThorasTrabajo = {
 }
 
 const empleadoNull = {id:-1, nombre:'Sin Nombre'}
+const horasTrabajoNull: ThorasTrabajo = {id:-1, fecha:'', horaEntrada:'', horaSalida:'', empleadoId:-1}
 
 export default function Main () {
 
     const [empleados, setEmpleados] = useState<Templeado[]>([]);
     const [empleado, setEmpleado] = useState<Templeado>(empleadoNull);
     const [horasTrabajo, setHorasTrabajo] = useState<ThorasTrabajo[]>([]);
+    const [horasTrabajoId, setHorasTrabajoId] = useState<ThorasTrabajo>(horasTrabajoNull);
     const [componente, setComponente] = useState<string>('EMPLEADO');
     const [responseStatusCode, setResponseStatusCode] = useState<number>(-1);
 
@@ -40,6 +42,7 @@ export default function Main () {
             case 'EMPLEADOS': return <ListaEmpleados empleados={empleados}></ListaEmpleados>
             case 'EMPLEADO_ELIMINADO': return <EmpleadoEliminado responseStatusCode={responseStatusCode}></EmpleadoEliminado>;
             case 'HORAS_TRABAJO': return <HorasTrabajoEmpleado horasTrabajo={horasTrabajo}></HorasTrabajoEmpleado>
+            case 'HORAS_TRABAJO_ID': return <HorasTrabajoEmpleado horasTrabajoId={horasTrabajoId}></HorasTrabajoEmpleado>
         }
     }
 
@@ -52,9 +55,14 @@ export default function Main () {
                     setEmpleado={setEmpleado}
                     setComponente={setComponente}
                     setHorasTrabajo={setHorasTrabajo}
+                    setHorasTrabajoId={setHorasTrabajoId}
                     setResponseStatusCode={setResponseStatusCode}>
                 </GetEmpleado>
                 <PostEmpleado setEmpleado={setEmpleado} setComponente={setComponente}></PostEmpleado>
+            </div>
+            <div className="flex flex-col">
+                {//aqui la forma para las horas de trabajo
+                }
             </div>
             <div>
                 <ResultComponent></ResultComponent>   

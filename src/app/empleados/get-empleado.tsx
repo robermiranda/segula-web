@@ -5,10 +5,12 @@ export default function GetEmpleado ({
     setEmpleado,
     setComponente,
     setHorasTrabajo,
+    setHorasTrabajoId,
     setResponseStatusCode }: {
         setEmpleado?: (x: Templeado) => void,
         setComponente: (x: string) => void,
         setHorasTrabajo: (x: ThorasTrabajo[]) => void,
+        setHorasTrabajoId: (x: ThorasTrabajo) => void,
         setResponseStatusCode? :(x: number) => void,
     }) {
 
@@ -28,6 +30,13 @@ export default function GetEmpleado ({
         setComponente('HORAS_TRABAJO');
     }
 
+    async function getHorasTrabajoId ()  {
+        const data = await fetch(`/horas-trabajo/${id}`);
+        const horasTrabajoId = await data.json();
+        if (setHorasTrabajoId) setHorasTrabajoId(horasTrabajoId);
+        setComponente('HORAS_TRABAJO_ID');
+    }
+
     async function eliminarEmpleado () {
         const response = await fetch(`/empleados/${id}`, {method: 'DELETE'});
         if (setResponseStatusCode) setResponseStatusCode(response.status)
@@ -42,7 +51,7 @@ export default function GetEmpleado ({
         <>
             <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Empleado ID"
+                placeholder="Empleado ID or Horas Trabajo ID"
                 onChange={handleInputChange}/>
             <button type="button"
                 onClick={getEmpleado}
@@ -51,10 +60,16 @@ export default function GetEmpleado ({
                 Empleado
             </button>
             <button type="button"
+                onClick={getHorasTrabajoId}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                
+                Horas Trabajo ID
+            </button>
+            <button type="button"
                 onClick={getHorasTrabajo}
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 
-                Horas Trabajo
+                Horas Trabajo Empleado
             </button>
             <button type="button"
                 onClick={eliminarEmpleado}
