@@ -20,6 +20,7 @@ export default function HorasTrabajoEmpleado ({
                             <th className="border border-gray-300">Fecha</th>
                             <th className="border border-gray-300">Hora Entrada</th>
                             <th className="border border-gray-300">Hora Salida</th>
+                            <th className="border border-gray-300">Empleado ID</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,7 @@ export default function HorasTrabajoEmpleado ({
                                 <td className="border border-gray-300">{horas.fecha.split('T')[0]}</td>
                                 <td className="border border-gray-300">{horas.horaEntrada}</td>
                                 <td className="border border-gray-300">{horas.horaSalida}</td>
+                                <td className="border border-gray-300">{horas.empleadoId}</td>
                             </tr>
                         ))
                     }       
