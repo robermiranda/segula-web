@@ -43,7 +43,7 @@ export default function HorasTrabajoEmpleado ({
 
     if (horasTrabajoId) {
 
-        if ( ! horasTrabajoId.id) return <p>{JSON.stringify(horasTrabajoId)}</p>
+        if ( ! horasTrabajoId.id || horasTrabajoId.id <= 0) return <p>{JSON.stringify(horasTrabajoId)}</p>
         return (
             <>
                 <table className="border-collapse border border-gray-400">

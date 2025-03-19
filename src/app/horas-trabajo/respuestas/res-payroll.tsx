@@ -1,16 +1,19 @@
 import type { Tpayroll } from "@/app/main";
 
-export default function Payroll ({payroll}: {payroll: Tpayroll}) {
+export default function Payroll ({data}: {data: Tpayroll}) {
 
-    if ( ! payroll.payroll) return <p>{JSON.stringify(payroll)}</p>
-    
+    if ( ! data.payrollAcumulado) return <p>{JSON.stringify(data)}</p>
+
     return (
         <>
             <table className="border-collapse border border-gray-400">
                 <thead>
                     <tr>
-                        <th className="border border-gray-300">Dias Trabajados</th>
-                        <th className="border border-gray-300">Horas trabajadas</th>
+                        <th className="border border-gray-300">id</th>
+                        <th className="border border-gray-300">fecha</th>
+                        <th className="border border-gray-300">Hora Entrada</th>
+                        <th className="border border-gray-300">Hora Salida</th>
+                        <th className="border border-gray-300">Total Horas</th>
                         <th className="border border-gray-300">Horas Normales</th>
                         <th className="border border-gray-300">Horas Extra</th>
                         <th className="border border-gray-300">Tarifa</th>
@@ -18,16 +21,24 @@ export default function Payroll ({payroll}: {payroll: Tpayroll}) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className="border border-gray-300">{payroll.diasTrabajados}</td>
-                        <td className="border border-gray-300">{payroll.horasTrabajadas}</td>
-                        <td className="border border-gray-300">{payroll.horasNormales}</td>
-                        <td className="border border-gray-300">{payroll.horasExtra}</td>
-                        <td className="border border-gray-300">{payroll.tarifaHoraria}</td>
-                        <td className="border border-gray-300">{payroll.payroll}</td>
-                    </tr>     
+                    {
+                        data.payrollDia.map((d) => 
+                            <tr key={d.id}>
+                                <td className="border border-gray-300">{d.id}</td>
+                                <td className="border border-gray-300">{d.fecha.split('T')[0]}</td>
+                                <td className="border border-gray-300">{d.horaEntrada}</td>
+                                <td className="border border-gray-300">{d.horaSalida}</td>
+                                <td className="border border-gray-300">{d.totalHorasTrabajadas}</td>
+                                <td className="border border-gray-300">{d.horasNormales}</td>
+                                <td className="border border-gray-300">{d.horasExtra}</td>
+                                <td className="border border-gray-300">{d.tarifa}</td>
+                                <td className="border border-gray-300">{d.payroll}</td>
+                            </tr>
+                        )
+                    }
                 </tbody>
             </table>
+            <p>Payroll Acumulado: {data.payrollAcumulado}</p>
         </>
     );
 }

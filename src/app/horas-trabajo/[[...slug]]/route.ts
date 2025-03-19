@@ -47,7 +47,7 @@ export async function POST (request: Request,) {
     });
 
     if (! response.ok) {
-        console.log("POST ERROR STATUS", response.status)
+        console.log("POST ERROR STATUS", response)
         return Response.json({
             id: -1,
         });
