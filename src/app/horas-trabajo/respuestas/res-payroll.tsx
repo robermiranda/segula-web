@@ -38,7 +38,10 @@ export default function Payroll ({data}: {data: Tpayroll}) {
                     }
                 </tbody>
             </table>
-            <p>Payroll Acumulado: {data.payrollAcumulado}</p>
+            <div className="mt-4">
+                <span className="font-medium">Payroll Acumulado</span>:
+                <span className="font-semibold text-slate-900">{data.payrollAcumulado}</span>
+            </div>
         </>
     );
 }

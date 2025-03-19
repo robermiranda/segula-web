@@ -78,26 +78,44 @@ export default function Main () {
     }
 
     return (
-        <div className="flex flex-row">
-            <div className="flex flex-col">
-                <GetEmpleados setEmpleados={setEmpleados} setComponente={setComponente}>
-                </GetEmpleados>
-                <GetEmpleado
-                    setEmpleado={setEmpleado}
-                    setComponente={setComponente}
-                    setHorasTrabajo={setHorasTrabajo}
-                    setHorasTrabajoId={setHorasTrabajoId}
-                    setResponseStatusCode={setResponseStatusCode}>
-                </GetEmpleado>
-                <PostEmpleado setEmpleado={setEmpleado} setComponente={setComponente}></PostEmpleado>
-            </div>
-            <div className="flex flex-col">
-                <GetHorasTrabajo setHorasTrabajo={setHorasTrabajo} setComponente={setComponente}></GetHorasTrabajo>
-                <GetPayroll setPayroll={setPayroll} setComponente={setComponente}></GetPayroll>
-                <PostHorasTrabajo setHoraTrabajo={setHoraTrabajo} setComponente={setComponente}></PostHorasTrabajo>
-            </div>
-            <div>
-                <ResultComponent></ResultComponent>   
+        <div className="mt-8 ml-4">
+            <div className="flex flex-row">
+                <div className="flex flex-col mr-6 max-w-64">
+                    <div className="mb-8">
+                        <GetEmpleados setEmpleados={setEmpleados} setComponente={setComponente}>
+                        </GetEmpleados>
+                    </div>
+                    <div className="mb-8 p-1 border-2 border-slate-300">
+                        <GetEmpleado
+                            setEmpleado={setEmpleado}
+                            setComponente={setComponente}
+                            setHorasTrabajo={setHorasTrabajo}
+                            setHorasTrabajoId={setHorasTrabajoId}
+                            setResponseStatusCode={setResponseStatusCode}>
+                        </GetEmpleado>
+                    </div>
+                    <div className="mb-8 p-1 border-2 border-slate-300">
+                        <PostEmpleado setEmpleado={setEmpleado} setComponente={setComponente}>
+                        </PostEmpleado>
+                    </div>
+                </div>
+                <div className="flex flex-col mr-12 max-w-64">
+                    <div className="mb-8">
+                        <GetHorasTrabajo setHorasTrabajo={setHorasTrabajo} setComponente={setComponente}>
+                        </GetHorasTrabajo>
+                    </div>
+                    <div className="mb-8 p-1 border-2 border-slate-300">
+                        <GetPayroll setPayroll={setPayroll} setComponente={setComponente}>
+                        </GetPayroll>
+                    </div>
+                    <div className="mb-8 p-1 border-2 border-slate-300">
+                        <PostHorasTrabajo setHoraTrabajo={setHoraTrabajo} setComponente={setComponente}>
+                        </PostHorasTrabajo>
+                    </div>
+                </div>
+                <div className="mr-2">
+                    <ResultComponent></ResultComponent>   
+                </div>
             </div>
         </div>
     ); 

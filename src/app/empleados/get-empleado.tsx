@@ -50,30 +50,30 @@ export default function GetEmpleado ({
     return (
         <>
             <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Empleado ID or Horas Trabajo ID"
+                className="shadow appearance-none border rounded w-full py-2 px-3 mb-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Empleado ID or ID Horas Trabajo"
                 onChange={handleInputChange}/>
             <button type="button"
                 onClick={getEmpleado}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2 rounded w-full">
                 
                 Empleado
             </button>
             <button type="button"
                 onClick={getHorasTrabajoId}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2 rounded w-full">
                 
                 Horas Trabajo ID
             </button>
             <button type="button"
                 onClick={getHorasTrabajo}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2 rounded w-full">
                 
                 Horas Trabajo Empleado
             </button>
             <button type="button"
                 onClick={eliminarEmpleado}
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full">
                 
                 ELIMINAR EMPLEADO
             </button>

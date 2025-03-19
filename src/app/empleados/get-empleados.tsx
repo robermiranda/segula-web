@@ -17,7 +17,7 @@ export default function GetEmpleados ({
     return (
         <button type="button"
             onClick={getListaEmpleados}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
             
             Lista empleados
         </button>
